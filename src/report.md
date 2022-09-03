@@ -152,93 +152,67 @@ etc/netplan/00-installer-config.yaml для ws2
 ![ping_ws2_2](screens/ping_ws2_2.png)
 
 ## Part 3. Iperf3 utility
-1. Узнаем текущее название машины следующей командой: 
 
-        $hostnamectl
-
-![hostnamectl](screens/hostnamectl.png)
-
-2. Чтобы изменить имя пользователя воспользуемся командой:
-
-        $sudo hostnamectl set-hostname <new_name> 
-
-![hostnamectl_new](screens/hostnamectl_new.png)
-
-3. Текущий часовой пояс можно просмотреть командой:
-
-        $timedatectl
+3.1 Скорость соединения
     
-![timedatectl](screens/timedatectl.png)
+    Перевести и записать в отчет
 
-4. Изменение часового пояса:
+3.2 Утилита iperf3
 
-        $sudo timedatectl set-timezone Europe/Moscow
+Измерить скорость соединения между ws1 и ws2
 
-![timedatectl_new](screens/timedatectl_new.png)
+Для измерения скорости запустим ws2 как сервер, клиентом будет выступать ws1
 
-5. Сетевые интерфейсы выводятся командой 
+![ws2_server](screens/ws2_server.png)
 
-        $ip link show
+![ws1_client](screens/ws1_client.png)
 
-![ip_show](screens/ip_show.png)
+И аналогично обратная ситуация ws1 - сервер ws2 - клиент
 
-__loopback__ - это официальный стандарт, неотъемлемая часть _unix/linux_ системы, не важно, серверной или настольной. нужен для работы многих приложений, для тестирования итд.
-Интерфейс __lo__ - интерфейс обратной петли и позволяет компьютеру обращатся к самому себе. Интерфейс имеет ip-адрес 127.0.0.1 и необходим для нормальной работы системы.
+![ws1_server](screens/ws1_server.png)
 
-6. Чтобы получить IP адрес устройства от DHPC сервера:
-    
-На скриншоте ниже видно, что IP интерфейсу присвоен динамически, т.к. в выводе присутствует аббр. _DHCP_:
-
-     $ip r
-
-![ip_r](screens/ip_r.png)
-
-Соответственно если в выводе данная аббр. отсутствует — это будет означать, что _IP_ статический. Данный метод проверки подойдет особенно тогда, когда подключение к компьютеру производится удаленно, т.к. действие осуществляется из командной строки. 
-
-Используя консольную команду получить _IP_ адрес устройства, на котором вы работаете, от _DHCP_ сервера.
-
-7. Bнутренний _IP_-адрес шлюза, он же _ip_-адрес по умолчанию (gw):
-
-        $routel | grep default
-    Его также можно узанть командой "__ip r__" но сейчас используем команду которая укажет только то, что нужно:
-
-![routel](screens/routel.png)
-
-8. внешний _ip_-адрес шлюза:
-
-       $wget -qO- ipinfi.io/ip
-
-![wget](screens/wget.png)
-
-9. Задание статичных данных:
-
-
-        $sudo vim /etc/netplan/00-installer-config.yaml
-
-![static_ip](screens/static_ip.png)
-![static_ip_after](screens/static_ip_after.png)
-
-10. после изменений пропингуем удаленные хосты _1.1.1.1_ и _ya.ru_:
-
-        $ping <address>
-
-![ping_ya](screens/ping_ya.png)
-![ping_1111](screens/ping_1111.png)
-
-флаг "_-c_" позволит указать точное количество отправленных пакетов.
-
-
+![ws2_client](screens/ws2_client.png)
 
 ## Part 4. Network firewall
 
-    $sudo apt-get update
-    $sudo apt-get dist-upgrade
+4.1 Утилита iptables
 
-![get_update](screens/get_update.png)
+Создать файл /etc/firewall.sh, имитирующий фаерволл, на ws1 и ws2:
 
-Для обновления всех установленных пакетов используется команда _apt-get_ upgrade. Она позволяет обновить те и только те установленные пакеты, для которых в репозиториях, перечисленных в _/etc/apt/sources.list_, имеются новые версии; при этом из системы не будут удалены никакие другие пакеты.
+ws1:
+
+![ws1_firewall](screens/ws1_firewall.png)
+
+ws2:
+
+![ws2_firewall](screens/ws2_firewall.png)
+
+Запустить файлы на обеих машинах командами chmod +x /etc/firewall.sh и /etc/firewall.sh
+
+ws1:
+
+![ws1_chmod](screens/ws1_chmod.png)
+
+ws2:
+
+![ws2_chmod](screens/ws2_chmod.png)
+
+4.2. Утилита nmap
 
 
+Командой ping найти машину, которая не "пингуется"
+
+ws1 to ws2:
+
+![ws1_pingfire](screens/ws1_pingfire.png)
+
+ws2 to ws1:
+
+![ws2_pingfire](screens/ws2_pingfire.png)
+
+Утилитой nmap показать, что хост машины запущен:
+
+![nmap](screens/nmap.png)
 
 ## Part 5. Static network routing
 

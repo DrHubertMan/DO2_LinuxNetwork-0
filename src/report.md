@@ -87,7 +87,7 @@ PUBLIC:
 
 10.10.100.1 -
 
-10.10.1.255 для broadcast
+10.10.1.255 +
 
 ## Part 2. Static routing between two machines
 
@@ -139,7 +139,17 @@ etc/netplan/00-installer-config.yaml для ws2
 
 для ws2
 
-![ping_ws1](screens/static_ws1.png)
+![static_ws2](screens/static_ws2.png)
+
+Пропинговать соединение между машинами
+
+Пинг с ws1 до ws2
+
+![ping_ws1_2](screens/ping_ws1_2.png)
+
+Пинг с ws2 до ws1
+
+![ping_ws2_2](screens/ping_ws2_2.png)
 
 ## Part 3. Iperf3 utility
 1. Узнаем текущее название машины следующей командой: 

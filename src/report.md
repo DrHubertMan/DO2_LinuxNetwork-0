@@ -250,11 +250,11 @@ ws21:
 
 ws22:
 
-![ws22_ipa](screens/ws22_ipa.png.png)
+![ws22_ipa](screens/ws22_ipa.png)
 
 r2:
 
-![r2_ipa](screens/r2_ipa.png.png)
+![r2_ipa](screens/r2_ipa.png)
 
 r1:
 

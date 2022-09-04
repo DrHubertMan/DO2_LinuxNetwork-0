@@ -290,6 +290,17 @@ r2:
 
 ![r2_config](screens/r2_config.png)
 
+Настроить маршрут по-умолчанию (шлюз) для рабочих станций. Для этого добавить gateway4 [ip роутера] в файле конфигураций
+
+Вызвать ip r и показать, что добавился маршрут в таблицу маршрутизации
+
+ws11:
+
+![ws11_gateway](screens/ws11_gateway.png)
+
+![ws11_route](screens/ws11_route.png)
+
+
 ## Part 6. Dynamic IP configuration using DHCP
 
     $sudo apt install ntp

@@ -266,6 +266,30 @@ ws11:
 
 5.2. Включение переадресации IP-адресов.
 
+Для включения переадресации IP, выполните команду на роутерах:
+
+    sudo sysctl -w net.ipv4.ip_forward=1
+
+r1:
+
+![r1_sysctl](screens/r1_sysctl.png)
+
+r2:
+
+![r2_sysctl](screens/r2_sysctl.png)
+
+Откройте файл /etc/sysctl.conf и добавьте в него следующую строку:
+
+    net.ipv4.ip_forward = 1
+
+r1:
+
+![r1_config](screens/r1_config.png)
+
+r2:
+
+![r2_config](screens/r2_config.png)
+
 ## Part 6. Dynamic IP configuration using DHCP
 
     $sudo apt install ntp

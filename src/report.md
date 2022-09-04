@@ -300,6 +300,12 @@ ws11:
 
 ![ws11_route](screens/ws11_route.png)
 
+Пропинговать с ws11 роутер r2 и показать на r2, что пинг доходит. Для этого использовать команду:
+
+    tcpdump -tn -i eth1
+
+![r1_tcpdump](screens/r1_tcpdump.png)
+
 
 ## Part 6. Dynamic IP configuration using DHCP
 

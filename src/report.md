@@ -366,7 +366,9 @@ ws11:
 
 ![resolv_conf](screens/resolv_conf.png)
 
+Перезагрузить службу DHCP командой systemctl restart isc-dhcp-server. Машину ws21 перезагрузить при помощи reboot и через ip a показать, что она получила адрес. Также пропинговать ws22 с ws21.
 
+![dhcp_restart](screens/dhcp_restart.png)
 
 ## Part 7. NAT
 

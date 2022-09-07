@@ -197,6 +197,8 @@ ws2:
 
 ![ws2_chmod](screens/ws2_chmod.png)
 
+Применены нормально закрытая и нормально открытая стратегии, в одной запрщено все, кроме конкретно разрешенных сервисов, во второй разрешено все, кроме конкретно запрещенных сервисов 
+
 4.2. Утилита nmap
 
 
@@ -369,6 +371,25 @@ ws11:
 Перезагрузить службу DHCP командой systemctl restart isc-dhcp-server. Машину ws21 перезагрузить при помощи reboot и через ip a показать, что она получила адрес. Также пропинговать ws22 с ws21.
 
 ![dhcp_restart](screens/dhcp_restart.png)
+
+![ws21_dhcp_ip](screens/ws21_dhcp_ip.png)
+
+![ws21_dhcp_ping](screens/ws21_dhcp_ping.png)
+
+Указать MAC адрес у ws11, для этого в etc/netplan/00-installer-config.yaml надо добавить строки: macaddress: 10:10:10:10:10:BA, dhcp4: true
+
+![ws11_netplan_new](screens/ws11_netplan_new.png)
+
+Для r1 настроить аналогично r2, но сделать выдачу адресов с жесткой привязкой к MAC-адресу (ws11). Провести аналогичные тесты
+
+![r1_dhcp_config](screens/r1_dhcp_config.png)
+
+![ws11_new_ip](screens/ws11_new_ip.png)
+
+Запросить с ws21 обновление ip адреса
+
+![ws21_newip](screens/ws21_newip.png)
+
 
 ## Part 7. NAT
 

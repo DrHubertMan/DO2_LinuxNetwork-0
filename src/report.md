@@ -431,7 +431,13 @@ ws11:
 
 ![r2_lastfirewall](screens/r2_lastfirewall.png)
 
+Проверить соединение по TCP для SNAT
 
+![ws22_telnet](screens/ws22_telnet.png)
+
+Проверить соединение по TCP для DNAT
+
+![r1_telnet](screens/r1_telnet.png)
 
 ## Part 8. Bonus. Introduction to SSH Tunnels
 

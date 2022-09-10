@@ -441,45 +441,20 @@ ws11:
 
 ## Part 8. Bonus. Introduction to SSH Tunnels
 
-Обновим репозиторий 
-
-    $sudo apt update
-
-Установим  SSH
-
-    $sudo apt-get install ssh
-
-Установим  OpenSSH
-
-    $sudo apt install openssh-server
-
-Добавим пакет SSH-сервера в автозагрузку:
-
-    $sudo systemctl enable ssh
-
-Открываем порт 2022
-
-    $sudo vim /etc/ssh/sshd_config
-
-![port](screens/port.png)
-
-Перезагрузим сервис
-
-    $sudo systemctl restart sshd
-
-
-![netstat](screens/netstat.png)
-
-* _netstat_ - служит для отображения состояния сетевого интрфейса.
-* _flag t_ - показать _TCP_ соединения.
-* _flag a_ - вывод всех активных подключений _TCP_.
-* _flag n_ - для отображения _IP_ адресов вместо имен хостов.
-* _Proto_ - имя протокола.
-* _Recv-Q_ - данные в буфере приема _TCP/IP_.
-* _Send-Q_ - данные в буфере отправки _TCP/IP_.
-* _Local Adress_ - локальный _IP_ адрес.
-* _Foreign Adress_ - внешний _IP_ адрес.
-* _State_ - прослушивается порт или нет.
 
 
 * [В начало](#contents)
+
+Запустить веб-сервер Apache на ws22 только на localhost 
+
+![ws22_port](screens/ws22_port.png)
+
+Воспользоваться Local TCP forwarding с ws21 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws21
+
+![ws21_sshd](screens/ws21_sshd.png)
+
+Воспользоваться Remote TCP forwarding c ws11 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws11, выполните команду
+
+    telnet 127.0.0.1 [локальный порт]
+
+![ws11_sshd](screens/ws11_sshd.png)

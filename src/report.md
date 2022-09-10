@@ -373,7 +373,7 @@ ws11:
 
 ![dhcp_restart](screens/dhcp_restart.png)
 
-![ws21_dhcpip](screens/ws21_dhcp_ip.png)
+![ws21_dhcpip](screens/ws21_dhcpip.png)
 
 ![ws21_dhcp_ping](screens/ws21_dhcp_ping.png)
 
